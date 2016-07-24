@@ -55,6 +55,8 @@ io.on("connection", function(socket) {
     socket.on("slider", function(data) {
         console.log(data);
 
+        data.value = parseFloat(data.value);
+
         if(fields[data.id] && fields[data.id].type == "slider" && data.value >= 0 && data.value <= 1) {
             fields[data.id].value = data.value;
             update(data.id);
